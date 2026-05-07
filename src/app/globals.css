@@ -1,12 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6f2ed;
-  --foreground: #1f1a17;
-  --surface: #fffcf8;
-  --muted: #6f655d;
-  --border: #d9cec3;
-  --primary: #7a4a43;
+  --background: #f4efe8;
+  --foreground: #1f1916;
+  --surface: #fbf6ef;
+  --muted: #756a62;
+  --border: #d7cabd;
+  --primary: #7c4c3d;
+  --surface-strong: #e9ded1;
+  --shadow-soft:
+    0 0 0 1px rgb(31 25 22 / 0.05), 0 24px 60px -32px rgb(31 25 22 / 0.22);
+  --shadow-strong:
+    0 0 0 1px rgb(31 25 22 / 0.08), 0 32px 80px -36px rgb(31 25 22 / 0.28);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --spacing-contain-max: 1600px;
   --spacing-edge: max(
     max(min(3.5vw, 96px), 8px),
@@ -18,12 +24,12 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-primary: var(--primary);
   --font-hero: var(--font-geist-sans);
-  --font-title:
-    "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-title: "Iowan Old Style", "Baskerville", "Songti TC", serif;
   --font-subtitle:
     "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --font-body-lg:
@@ -49,10 +55,15 @@
   html {
     background: var(--background);
     color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply min-h-full bg-background text-foreground font-body-sm;
+    background-image:
+      radial-gradient(circle at top, rgb(255 255 255 / 0.45), transparent 32%),
+      linear-gradient(180deg, #f7f2ec 0%, #f4efe8 28%, #f1ebe4 100%);
   }
 
   a,
@@ -65,5 +76,16 @@
 
   ::selection {
     background: color-mix(in srgb, var(--primary) 18%, transparent);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
   }
 }

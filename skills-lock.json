@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "better-ui": {
+      "source": "kun1225/thisweb-skills",
+      "sourceType": "github",
+      "computedHash": "12f693b40ed1c768f570023b772db6989c71664308b46854559c58999d8b6608"
+    }
+  }
+}
