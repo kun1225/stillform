@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --spacing-contain-max: 1440px;
+  --spacing-edge: max(max(min(3.5vw, 80px), 24px), calc((100vw - var(--spacing-contain-max)) / 2));
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-primary: #5C4B3A;
+  --color-background: #F7F4F0;
+  --color-surface: #FDFCFB;
+  --color-foreground: #1A1714;
+  --color-muted: #7C756E;
+  --color-border: rgba(26, 23, 20, 0.08);
+
+  --font-hero: var(--font-outfit), "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-title: var(--font-outfit), "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-subtitle: var(--font-outfit), "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-label: var(--font-outfit), sans-serif;
+  --font-body-lg: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-body-sm: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-caption: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility px-edge {
+  padding-left: var(--spacing-edge);
+  padding-right: var(--spacing-edge);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
