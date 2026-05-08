@@ -1,65 +1,167 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+
+import { ProductRender } from "./_components/product-render";
+
+const principles = [
+  {
+    title: "Physical focus",
+    body: "A timer that stays on the desk, not inside the same device that keeps asking for your attention.",
+  },
+  {
+    title: "Quiet presence",
+    body: "Brushed metal, soft underlight, and a display that reads clearly from across the room.",
+  },
+  {
+    title: "Daily ritual",
+    body: "Alarm clock and pomodoro timer, combined into one object you will want to keep in view.",
+  },
+];
+
+const materials = [
+  "Rounded aluminum body with a restrained silhouette",
+  "High-contrast display tuned for quick reading",
+  "Warm base light that leaves the desk feeling calm, not theatrical",
+];
+
+export const metadata: Metadata = {
+  title: "Stillform | Focus, placed in the room",
+  description:
+    "A refined physical timer for focused work, designed to belong on the desk.",
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="home-shell">
+      <div className="home-ambient" />
+
+      <section className="hero-section">
+        <header className="site-header">
+          <a href="#" className="wordmark">
+            Stillform
+          </a>
+          <a href="#waitlist" className="nav-link">
+            Join waitlist
+          </a>
+        </header>
+
+        <div className="hero-layout">
+          <div className="hero-copy">
+            <p className="eyebrow">Alarm clock and pomodoro timer</p>
+            <h1>Focus, placed in the room.</h1>
+            <p className="hero-body">
+              A physical timer for people who care how their desk feels. Calm
+              to look at, precise to use, and quiet enough to stay in view all
+              day.
+            </p>
+
+            <div className="hero-actions">
+              <a href="#waitlist" className="button-primary">
+                Join the waitlist
+              </a>
+              <a href="#details" className="button-secondary">
+                See the object
+              </a>
+            </div>
+
+            <p className="hero-note">
+              Designed for remote workers, makers, and anyone building a desk
+              worth staying at.
+            </p>
+          </div>
+
+          <div className="hero-object">
+            <ProductRender variant="hero" />
+          </div>
+        </div>
+      </section>
+
+      <section className="principles-section" aria-labelledby="principles-title">
+        <div className="section-heading">
+          <p className="eyebrow">Why it belongs here</p>
+          <h2 id="principles-title">Built for attention, not interruption.</h2>
+        </div>
+
+        <div className="principles-list">
+          {principles.map((principle) => (
+            <article key={principle.title} className="principle-item">
+              <h3>{principle.title}</h3>
+              <p>{principle.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="details"
+        className="details-section"
+        aria-labelledby="details-title"
+      >
+        <div className="details-copy">
+          <p className="eyebrow">Material detail</p>
+          <h2 id="details-title">
+            The object is the interface.
+          </h2>
+          <p>
+            Stillform is shaped like a piece of desktop equipment that has
+            earned its place. The body feels composed, the face stays legible,
+            and the warm light at the base keeps the device present without
+            asking to be admired.
+          </p>
+
+          <ul className="detail-list">
+            {materials.map((material) => (
+              <li key={material}>{material}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="details-object">
+          <ProductRender variant="detail" />
+        </div>
+      </section>
+
+      <section className="ritual-section" aria-labelledby="ritual-title">
+        <div className="ritual-panel">
+          <p className="eyebrow">A calmer routine</p>
+          <h2 id="ritual-title">Set the hour. Start the session. Leave the phone elsewhere.</h2>
+        </div>
+        <div className="ritual-copy">
+          <p>
+            In the morning, it behaves like a clock. During work, it becomes a
+            focus timer. At night, it returns to the background. One device,
+            one gesture, no app-switching ceremony.
+          </p>
+          <p>
+            The point is not novelty. The point is that attention feels easier
+            when the tool in front of you was designed for that single job.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section id="waitlist" className="waitlist-section" aria-labelledby="waitlist-title">
+        <div className="waitlist-copy">
+          <p className="eyebrow">Early access</p>
+          <h2 id="waitlist-title">Be first to know when Stillform is ready.</h2>
+          <p>
+            Join the waitlist for launch updates, release timing, and first
+            access.
+          </p>
         </div>
-      </main>
-    </div>
+
+        <form className="waitlist-form">
+          <label className="sr-only" htmlFor="email">
+            Email address
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email address"
+            autoComplete="email"
+          />
+          <button type="button">Join waitlist</button>
+        </form>
+      </section>
+    </main>
   );
 }
